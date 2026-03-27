@@ -1,4 +1,4 @@
-const { addUser, deleteUser, getAllUsers, getUserById, updateUser } = require("../controller/user.controller");
+const { addUser, deleteUser, getAllUsers, getUserById, updateUser, getUserByEmail } = require("../controller/user.controller");
 
 const userRouter =require("express").Router();
 
@@ -8,6 +8,7 @@ userRouter.get("/greet", (req, res) =>{
 
 userRouter.get("/", getAllUsers);
 userRouter.get("/:id", getUserById);
+userRouter.get("/email/:email", getUserByEmail);
 userRouter.post("/", addUser);
 userRouter.put("/:id", updateUser);
 userRouter.delete("/:id", deleteUser);
