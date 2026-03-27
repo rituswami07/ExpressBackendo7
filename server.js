@@ -1,28 +1,28 @@
-require("dotenv").config();
+require("dotenv").config({ quiet: true});
 
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const userRouter = require("./routers/user.router");
 
-const app = express(); // ✅ use app
+const server = express(); 
 
 const PORT = process.env.PORT || 8080;
 
 // Middleware
-app.use(cors());
-app.use(express.static("public"));
-app.use(express.json());
+server.use(cors());
+server.use(express.static("public"));
+server.use(express.json());
 
 // Routes
-app.get("/", (req, res) => {
+server.get("/", (req, res) => {
   res.send("Server is up and running!");
 });
 
-app.use("/api/v1/users", userRouter);
+server.use("/api/v1/users", userRouter);
 
 // ✅ ONLY ONE listen + bind 0.0.0.0
-app.listen(PORT, "0.0.0.0", () => {
+server.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
 
