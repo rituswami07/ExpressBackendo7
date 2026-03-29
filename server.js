@@ -14,7 +14,7 @@ const morgan = require("morgan");
 const authRequest = require("./middlewares/auth.middleware");
 server.use(cors({
   origin: [
-    "http://localhost:3000",
+    "http://localhost:5000",
     "https://frontend-dusky-kappa-76.vercel.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
@@ -28,7 +28,7 @@ server.use(express.static(path.join(__dirname, 'public')));
 server.use(express.json());
 
 // Routes
-server.get("/", (req, res) => {
+server.get("/api/v1/users", (req, res) => {
   res.send("Server is up and running!");
 });
 
