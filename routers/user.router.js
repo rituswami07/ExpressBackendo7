@@ -2,7 +2,7 @@ const { addUser, deleteUser, getAllUsers, getUserById, updateUser, getUserByEmai
 
 const userRouter =require("express").Router();
 
-userRouter.get("/greet", (req, res) =>{
+userRouter.get("/", (req, res) =>{
     res.send("Hello sir!");
 });
 
