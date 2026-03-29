@@ -7,8 +7,8 @@ userRouter.get("/greet", (req, res) =>{
 });
 
 userRouter.get("/", getAllUsers);
-userRouter.get("/:id", getUserById);
 userRouter.get("/email/:email", getUserByEmail);
+userRouter.get("/:id", getUserById);
 userRouter.post("/", addUser);
 userRouter.put("/:id", updateUser);
 userRouter.delete("/:id", deleteUser);
