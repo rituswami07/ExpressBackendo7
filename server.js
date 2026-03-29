@@ -25,6 +25,10 @@ server.get("/", (req, res) => {
   res.send("Server is up and running!");
 });
 
+server.get("/test", (req, res) => {
+  res.send("Test route working");
+});
+
 server.use("/api/v1/users", userRouter);
 
 server.listen(PORT, "0.0.0.0", () => {
