@@ -12,7 +12,9 @@ const PORT = process.env.PORT || 8080;
 
 const morgan = require("morgan");
 const authRequest = require("./middlewares/auth.middleware");
-server.use(cors());
+server.use(cors({
+  origin: "https://frontend-dusky-kappa-76.vercel.app"
+}));
 server.use(authRequest);
 server.use(morgan("dev"))
 
