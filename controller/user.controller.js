@@ -21,7 +21,7 @@ exports.getUserById = async (req , res) => {
     res.json(user);
     }catch (error) {
 
-    res.send("Getting User Details Having ID:" +id);
+    res.status(500).json({ error : "Failed to fetch user"});
     }
 };
 
@@ -33,6 +33,8 @@ exports.getUserByEmail = async (req , res) => {
     if (!user) {
     return res.status(404).json({ error: "User not found"});
     }
+    delete user.password;
+    delete user.__v;
     res.json(user);
     }catch (error) {
 
@@ -85,7 +87,7 @@ exports.deleteUser = async (req , res) => {
      const { id } = req.params;
     
     try {
-    const deleteUser = await User.findByIdAndDelete(id , user, {new:true});
+    const deleteUser = await User.findByIdAndDelete(id);
     if (!deleteUser) {
     return res.status(404).json({ error: "User not found"});
     }

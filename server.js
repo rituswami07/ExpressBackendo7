@@ -10,17 +10,22 @@ const authRouter = require("./routers/auth.router");
 const server = express(); 
 
 const PORT = process.env.PORT || 8080;
+const cookieParser = require("cookie-parser");
 
 const morgan = require("morgan");
 const { authMiddle1ware } = require("./middlewares/auth.middleware");
+const { loggingMiddleware } = require("./middlewares/logging.middleware");
 const corsOptions = require("./config/cors.config");
+
+server.use(express.urlencoded({ extended: true}));
+server.use(cookieParser());
 
 server.use(cors(corsOptions));
 server.use(morgan("dev"))
 
 
-// server.use(express.static(path.join(__dirname, 'public')));
 server.use(express.json());
+ server.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 server.get("/", (req, res) => {
